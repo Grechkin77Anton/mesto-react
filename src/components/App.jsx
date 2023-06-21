@@ -11,6 +11,19 @@ function App() {
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false)
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false)
 
+  const[selectedCard, setSelectedCard] = useState({})
+  const[isImagePopup, setIsImagePopup] = useState(false)
+
+  // console.log(selectedCard)
+
+
+  function closeAllPopups() {
+    setIsEditProfilePopupOpen(false)
+    setIsAddPlacePopupOpen(false)
+    setIsEditAvatarPopupOpen(false)
+    setIsImagePopup(false)
+  }
+
   function handleEditProfileClick() { 
     setIsEditProfilePopupOpen(true)
   }
@@ -22,12 +35,16 @@ function App() {
   function handleEditAvatarClick() { 
     setIsEditAvatarPopupOpen(true)
   }
+  function handleCardClick(card) {
+    setSelectedCard(card)
+    setIsImagePopup(true)
+  }
+
 
   // function handleDelete() { 
   // }
 
-  // function handleCard() { 
-  // }
+  
 
   return (
     <div className="page">
@@ -38,6 +55,7 @@ function App() {
       onEditProfile = {handleEditProfileClick} 
       onAddPlace = {handleAddPlaceClick}
       onEditAvatar = {handleEditAvatarClick}
+      onCardClick = {handleCardClick}
       />
       
       
@@ -48,6 +66,7 @@ function App() {
       title='Редактировать профиль'
       titleButton='Сохранить'
       isOpen = {isEditProfilePopupOpen}
+      onClose = {closeAllPopups}
       >
         
         <input
@@ -85,6 +104,7 @@ function App() {
       title='Новое место'
       titleButton='Создать'
       isOpen = {isAddPlacePopupOpen}
+      onClose = {closeAllPopups}
       >
         <input
                   type="text"
@@ -118,6 +138,7 @@ function App() {
       name='edit-avatar'
       title='Обновить аватар'
       isOpen={isEditAvatarPopupOpen}
+      onClose = {closeAllPopups}
       >
         <input
               type="url"
@@ -138,7 +159,12 @@ function App() {
       title='Вы уверены?'
       titleButton='Да' />
       
-      <PopupImage />
+      <PopupImage 
+      card={selectedCard} 
+      isOpen={isImagePopup} 
+      onClose = {closeAllPopups}
+      />
+
 
    </div>
 

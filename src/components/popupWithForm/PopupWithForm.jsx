@@ -1,4 +1,4 @@
-export default function PopupWithForm({name, title,titleButton, children, isOpen}) {
+export default function PopupWithForm({name, title,titleButton, children, isOpen, onClose}) {
    
     return (
         <div className={`popup popup_type_${name} ${isOpen && 'popup_opened'}`}>
@@ -18,7 +18,7 @@ export default function PopupWithForm({name, title,titleButton, children, isOpen
                 </button>
               </div>
             </form>
-            <button type="button" className="popup__close" />
+            <button type="button" className="popup__close" onClick={onClose}/>
           </div>
          
       </div>
