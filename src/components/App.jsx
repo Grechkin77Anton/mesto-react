@@ -2,7 +2,7 @@ import Header from "./Header/Header.jsx";
 import Main from "./main/Main.jsx";
 import Footer from "./footer/Footer.jsx";
 import PopupWithForm from "./popupWithForm/PopupWithForm.jsx";
-import PopupImage from "./popupImage/PopupImage.jsx";
+import ImagePopup from "./imagePopup/ImagePopup.jsx";
 import {useState} from 'react';
 
 function App() {
@@ -39,11 +39,6 @@ function App() {
     setSelectedCard(card)
     setIsImagePopup(true)
   }
-
-
-  // function handleDelete() { 
-  // }
-
   
 
   return (
@@ -159,7 +154,7 @@ function App() {
       title='Вы уверены?'
       titleButton='Да' />
       
-      <PopupImage 
+      <ImagePopup 
       card={selectedCard} 
       isOpen={isImagePopup} 
       onClose = {closeAllPopups}
