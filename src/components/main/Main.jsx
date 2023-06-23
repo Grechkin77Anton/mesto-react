@@ -9,17 +9,14 @@ export default function Main({onEditProfile,  onAddPlace , onEditAvatar, onCardC
   const[userAvatar,setUserAvatar] = useState('')
   const[cards, setCards] = useState([])
 
- 
-
-  useEffect(() => {
-    Promise.all([api.getInfo(), api.getCards()])
-  .then(([dataUser, dataCard]) => {
-    setUserName(dataUser.name)
-    setUserDescription(dataUser.about)
-    setUserAvatar(dataUser.avatar)
-    dataCard.forEach(data => data.myid = dataUser._id) 
-    setCards(dataCard)
-    });
+  useEffect(() => { 
+    Promise.all([api.getInfo(), api.getCards()]) 
+      .then(([dataUser, dataCard]) => { 
+        setUserName(dataUser.name) 
+        setUserDescription(dataUser.about) 
+        setUserAvatar(dataUser.avatar)  
+        setCards(dataCard) 
+        }); 
   }, [])
 
     return (
