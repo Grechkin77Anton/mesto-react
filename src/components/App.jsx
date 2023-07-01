@@ -56,6 +56,23 @@ function App() {
     // setIsImagePopup(true)
   }
 
+  function handleCardLike(card) {
+    const isLiked = card.likes.some(item => currentUser._id === item._id)
+      if(isLiked) {
+          api.deleteLike(card._id)
+          .then(res => {
+              setCards(state => state.map((c) => c._id === card._id ? res : c))
+          })
+          .catch(console.error)
+      } else {
+          api.addCardLike(card._id)
+          .then(res => {
+            setCards(state => state.map((c) => c._id === card._id ? res : c))
+          })
+          .catch(console.error)
+      }
+  }
+
   useEffect(() => {
     Promise.all([api.getInfo(), api.getCards()])
       .then(([dataUser, dataCard]) => {
@@ -118,6 +135,7 @@ function App() {
           onCardClick={handleCardClick}
           onDeleteCard={handleDeleteCardClick}
           cards={cards}
+          onCardLike={handleCardLike}
         />
 
 

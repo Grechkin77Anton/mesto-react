@@ -2,7 +2,7 @@ import { useContext } from "react"
 import CurrentUserContext from "../../contexts/CurrentUserContext.js";
 import ButtonLike from '../ButtonLike/ButtonLike.jsx';
 
-export default function Card({card, onCardClick, onDeleteCard}) {
+export default function Card({card, onCardClick, onDeleteCard, onCardLike}) {
     const currentUser = useContext(CurrentUserContext) 
     return (
         <article className="element">
@@ -11,7 +11,7 @@ export default function Card({card, onCardClick, onDeleteCard}) {
             <div className="element__reaction">
                 <h2 className="element__text">{card.name}</h2>
                 <div className="element__reaction-wrapper">
-                    <ButtonLike likes={card.likes} myId={currentUser._id} cardId={card._id} />
+                    <ButtonLike onCardLike={onCardLike} myId={currentUser._id} card={card} />
                 </div>
             </div>
         </article>
