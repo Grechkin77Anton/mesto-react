@@ -1,4 +1,4 @@
-export default function PopupWithForm({name, title,titleButton, children, isOpen, onClose, onSubmit , isValid=true}) {
+export default function PopupWithForm({name, title,titleButton, children, isOpen, onClose, onSubmit , isValid=true, disabled=true}) {
    
     return (
         <div className={`popup popup_type_${name} ${isOpen && 'popup_opened'}`}>

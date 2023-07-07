@@ -94,7 +94,7 @@ function App() {
       .catch(console.error)
   }
 
-  function handleUpdateUser (dataUser, formReset) {
+  function handleUpdateUser (dataUser) {
     api.setUserInfo(dataUser)
     .then(res => {
       setCurrentUser(res)
@@ -103,7 +103,7 @@ function App() {
     .catch(console.error)
   }
 
-  function handleUpdateAvatar(dataUser, formReset) {
+  function handleUpdateAvatar(dataUser) {
     api.setNewAvatar(dataUser)
     .then(res => {
       setCurrentUser(res)
@@ -112,7 +112,7 @@ function App() {
     .catch(console.error)
   }
 
-  function handleAddPlaceSubmit(newCard, formReset) {
+  function handleAddPlaceSubmit(newCard) {
     api.addNewCard(newCard)
     .then(newCard => {
       setCards([newCard, ...cards])
